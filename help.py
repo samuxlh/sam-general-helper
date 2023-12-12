@@ -4,9 +4,14 @@ import subprocess
 
 
 def first_run():
-    command = 'powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))"'
-    subprocess.run(command, shell=True)
-    command = '''choco install git --version 2.43.0 -y
+    try:
+        command = 'powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))"'
+        subprocess.run(command, shell=True)
+    except Exception as e:
+        print('Chocolatey already installed.')
+    
+    try:
+        command = '''choco install git --version 2.43.0 -y
 choco install vscode --version 1.85.0 -y
 choco install gsudo --version 2.4.0 -y
 choco install steam --version 2.10.91.91221129 -y
@@ -21,7 +26,9 @@ choco install epicgameslauncher -y
 choco install goggalaxy -y
 choco install stremio -y
     '''
-    subprocess.run(command, shell=True)
+        subprocess.run(command, shell=True)
+    except Exception as err:
+        print(f'{err}\nNot able to install all packages.')
 
 
 def print_help():
