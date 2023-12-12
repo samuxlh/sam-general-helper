@@ -2,6 +2,7 @@ import os
 import re
 import subprocess
 
+commands = ['sleep MINUTES','abort_sleep','yt LINK', 'first_run', 'kms'] 
 
 def first_run():
     try:
@@ -32,10 +33,11 @@ choco install stremio -y
 
 
 def print_help():
-    print("Comandos: sleep X, abort, exit, activate\n")
+    print(f"Commandlist (command ARGUMENT):\n{commands}")
 
 
 run = True
+print("Welcome to Sam's General Helper, type help if u lost")
 
 
 def sleep(arg):
@@ -75,7 +77,7 @@ while run == True:
     if i.startswith("sleep"):
         t = re.findall(r'\d+', i)
         sleep(t[0])
-    elif i.startswith("abort"):
+    elif i.startswith("abort_sleep"):
         abort_sleep()
     elif i.startswith("help"):
         print_help()
@@ -86,7 +88,7 @@ while run == True:
         break
     elif i.startswith("first_run"):
         first_run()
-    elif i.startswith("secret"):
+    elif i.startswith("kms"):
         activate()
     else:
         run = False
