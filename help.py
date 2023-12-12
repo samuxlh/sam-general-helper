@@ -6,21 +6,20 @@ import subprocess
 def first_run():
     command = 'powershell -Command "Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString(\'https://chocolatey.org/install.ps1\'))"'
     subprocess.run(command, shell=True)
-    command = '''choco install googlechrome --version 119.0.6045.160 -y
-    choco install git --version 2.43.0 -y
-    choco install vscode --version 1.85.0 -y
-    choco install gsudo --version 2.4.0 -y
-    choco install steam --version 2.10.91.91221129 -y
-    choco install geforce-game-ready-driver --version 546.29 -y
-    choco install vcredist140 --version 14.38.33130 -y
-    choco install 7zip --version 23.1.0 -y
-    choco install dotnet3.5 --version 3.5.20160716 -y
-    choco install microsoft-windows-terminal --version 1.18.3181 -y
-    choco install qbittorrent -y
-    choco install powertoys -y
-    choco install epicgameslauncher -y
-    choco install goggalaxy -y
-    choco install stremio -y
+    command = '''choco install git --version 2.43.0 -y
+choco install vscode --version 1.85.0 -y
+choco install gsudo --version 2.4.0 -y
+choco install steam --version 2.10.91.91221129 -y
+choco install geforce-game-ready-driver --version 546.29 -y
+choco install vcredist140 --version 14.38.33130 -y
+choco install 7zip --version 23.1.0 -y
+choco install dotnet3.5 --version 3.5.20160716 -y
+choco install microsoft-windows-terminal --version 1.18.3181 -y
+choco install qbittorrent -y
+choco install powertoys -y
+choco install epicgameslauncher -y
+choco install goggalaxy -y
+choco install stremio -y
     '''
     subprocess.run(command, shell=True)
 
