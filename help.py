@@ -26,6 +26,7 @@ choco install powertoys -y
 choco install epicgameslauncher -y
 choco install goggalaxy -y
 choco install stremio -y
+choco install obs-studio -y
     '''
         subprocess.run(command, shell=True)
     except Exception as err:
